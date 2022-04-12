@@ -9,7 +9,7 @@ const emptyPasswordInputErrorMessage = "Please enter your password."
 const wrongPasswordErrorMessage = "The password you entered was not valid."
 const pageErrorMessage = "Oops! Something went wrong. Please try again later."
 
-describe('Verify Login Form', () => {
+describe('Test Login Form via PecodeSoftware', () => {
 
     beforeEach(function(){
         LoginPage.visitLoginPage();
