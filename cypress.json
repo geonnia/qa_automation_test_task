@@ -1,18 +1,13 @@
 {
-     
-        "reporter": "cypress-mochawesome-reporter",
-        "reporterOptions": {
-          "reportDir": "cypress/report",
-          "charts": true,
-          "reportPageTitle": "Pecode-test-report",
-          "embeddedScreenshots": true
-        },
+    "videoCompression": 0,
+    "reporter": "cypress-mochawesome-reporter",
+    "reporterOptions": {
+      "reportDir": "cypress/report",
+      "charts": true,
+      "reportPageTitle": "Pecode-test-report",
+      "embeddedScreenshots": true
+    },
     "env": {
-        "baseUrl": "https://www.pecodesoftware.com/qa-portal/registerlogin/registerlogin.php",
-        "username": "testUsername",
-        "password": "testPassword",
-        "validUsername": "test"
-        
+      "baseUrl": "https://www.pecodesoftware.com/qa-portal/registerlogin/registerlogin.php"
     }
-    
 }
