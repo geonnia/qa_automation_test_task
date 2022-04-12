@@ -1,0 +1,9 @@
+{
+    "env": {
+        "baseUrl": "https://www.pecodesoftware.com/qa-portal/registerlogin/registerlogin.php",
+        "username": "testUsername",
+        "password": "testPassword",
+        "validUsername": "test"
+        
+    }
+}
