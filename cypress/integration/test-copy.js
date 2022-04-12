@@ -7,6 +7,7 @@ const noSuchAccountErrorMessage = "No account found with that username."
 const emptyUsernameInputErrorMessage = "Please enter username."
 const emptyPasswordInputErrorMessage = "Please enter your password."
 const wrongPasswordErrorMessage = "The password you entered was not valid."
+const pageErrorMessage = "Oops! Something went wrong. Please try again later."
 
 describe('Verify Login Form', () => {
 
@@ -19,14 +20,28 @@ describe('Verify Login Form', () => {
         
     });
 
-    it('Try to login with unvalid credentials', () => {
+    it('Try to login with invalid credentials', () => {
         LoginPage.typeUsername(Cypress.env("username"))
         LoginPage.typePassword(Cypress.env("password"))
         LoginPage.submitForm()
         LoginPage.elements.errorMessageUsername().should('have.text', noSuchAccountErrorMessage)
         
     });
-    it('Trying to login with empty text inputs', () => {
+    it('Try to login with empty Username input', () => {
+        LoginPage.typeUsername(' ')
+        LoginPage.typePassword(Cypress.env("password"))
+        LoginPage.submitForm()
+        LoginPage.elements.errorMessageUsername().should('have.text', emptyUsernameInputErrorMessage)
+    });
+
+    it('Try to login with empty Password input', () => {
+        LoginPage.typeUsername(Cypress.env("username"))
+        LoginPage.typePassword(' ')
+        LoginPage.submitForm()
+        LoginPage.elements.errorMessagePassword().should('have.text', emptyPasswordInputErrorMessage)
+    });
+
+    it('Try to login with empty text inputs', () => {
         LoginPage.typeUsername(' ')
         LoginPage.typePassword(' ')
         LoginPage.submitForm()
@@ -34,11 +49,25 @@ describe('Verify Login Form', () => {
         LoginPage.elements.errorMessagePassword().should('have.text', emptyPasswordInputErrorMessage)
     });
 
-    it('Try to login with unvalid password', () => {
+    it('Try to login with invalid password', () => {
         LoginPage.typeUsername(Cypress.env("validUsername"))
         LoginPage.typePassword(Cypress.env("password"))
         LoginPage.submitForm()
         LoginPage.elements.errorMessagePassword().should('have.text', wrongPasswordErrorMessage)
         
     });
+
+    it('Try to login with UTF-8 symbols', () => {
+        LoginPage.typeUsername(Cypress.env("usernameUTF"))
+        LoginPage.typePassword(Cypress.env("passwordUTF"))
+        LoginPage.submitForm()  
+        cy.get('body').contains(pageErrorMessage)
+    });
+
+    it('Check succesful login', () => {
+        LoginPage.typeUsername(Cypress.env("validUsername"))
+        LoginPage.typePassword(Cypress.env("password"))
+        LoginPage.submitForm()
+        LoginPage.checkUrl()
+    })
 })

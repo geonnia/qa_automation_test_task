@@ -34,7 +34,9 @@ class LoginPage{
     }
 
     
-
+    checkUrl(){
+        cy.url().should('not.include', 'registerlogin.php')
+    }
 
 
 }
