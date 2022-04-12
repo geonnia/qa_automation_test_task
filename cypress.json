@@ -1,4 +1,12 @@
 {
+     
+        "reporter": "cypress-mochawesome-reporter",
+        "reporterOptions": {
+          "reportDir": "cypress/report",
+          "charts": true,
+          "reportPageTitle": "Pecode-test-report",
+          "embeddedScreenshots": true
+        },
     "env": {
         "baseUrl": "https://www.pecodesoftware.com/qa-portal/registerlogin/registerlogin.php",
         "username": "testUsername",
@@ -6,4 +14,5 @@
         "validUsername": "test"
         
     }
+    
 }

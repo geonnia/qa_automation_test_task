@@ -20,7 +20,7 @@ describe('Verify Login Form', () => {
         LoginPage.typeUsername(' ')
         LoginPage.typePassword(' ')
         LoginPage.submitForm()
-        LoginPage.elements.errorMessageUsername().should('have.text', "Please enter username.")
+        LoginPage.elements.errorMessageUsername().should('have.text', "Please enter username1.")
         LoginPage.elements.errorMessagePassword().should('have.text', "Please enter your password.")
     });
 
