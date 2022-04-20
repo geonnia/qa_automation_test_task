@@ -1,44 +1,41 @@
-class LoginPage{
-    visitLoginPage(){
-        cy.visit(Cypress.env("baseUrl"))
-    }
-    elements = {
-        logoImg: () => cy.get('#logomini'),
-        pageTitle: () => cy.get('h1'),
-        usernameInput: () =>  cy.get('[placeholder = Username]'),
-        passwordInput: () =>  cy.get('[placeholder = Password]'),
-        loginButton: () =>  cy.get('[value = Login]'),
-        errorMessageUsername: () =>  cy.get('.has-error [placeholder = Username] + .help-block'),
-        errorMessagePassword: () =>  cy.get('.has-error [placeholder = Password] + .help-block')
-    }
+class LoginPage {
+  visitLoginPage() {
+    cy.visit(Cypress.env('baseUrl'));
+  }
 
-    checkPageElememtsVisibility(){
-        this.elements.logoImg().should('be.visible')
-        this.elements.pageTitle().should('be.visible')
-        this.elements.usernameInput().should('be.visible')
-        this.elements.passwordInput().should('be.visible')
-        this.elements.loginButton().should('be.visible')
-        
-    }
+  elements = {
+    logoImg: () => cy.get('#logomini'),
+    pageTitle: () => cy.get('h1'),
+    usernameInput: () => cy.get('[placeholder = Username]'),
+    passwordInput: () => cy.get('[placeholder = Password]'),
+    loginButton: () => cy.get('[value = Login]'),
+    errorMessageUsername: () => cy.get('.has-error [placeholder = Username] + .help-block'),
+    errorMessagePassword: () => cy.get('.has-error [placeholder = Password] + .help-block'),
+  };
 
-    typeUsername(username){
-        this.elements.usernameInput().type(username)
-    }
+  checkPageElementsVisibility() {
+    this.elements.logoImg().should('be.visible');
+    this.elements.pageTitle().should('be.visible');
+    this.elements.usernameInput().should('be.visible');
+    this.elements.passwordInput().should('be.visible');
+    this.elements.loginButton().should('be.visible');
+  }
 
-    typePassword(password){
-        this.elements.passwordInput().type(password)
-    }
+  typeUsername(username) {
+    this.elements.usernameInput().type(username);
+  }
 
-    submitForm(){
-        this.elements.loginButton().click()
-    }
+  typePassword(password) {
+    this.elements.passwordInput().type(password);
+  }
 
-    
-    checkUrl(){
-        cy.url().should('not.include', 'registerlogin.php')
-    }
+  submitForm() {
+    this.elements.loginButton().click();
+  }
 
-
+  checkUrl() {
+    cy.url().should('not.include', 'registerlogin.php');
+  }
 }
-//export default LoginPage;
+// export default LoginPage;
 module.exports = new LoginPage();
